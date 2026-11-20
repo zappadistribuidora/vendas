@@ -13,6 +13,6 @@ const U='https://script.google.com/macros/s/AKfycbyvWnQrEzLjrR1RqRwcVdN2LM-tIXjX
 function abrir(h){document.open();document.write(h);document.close()}
 let c=null;try{c=localStorage.getItem('zappa_html')}catch(e){}
 const p=fetch(U).then(r=>r.text()).then(t=>{if(t.indexOf('Painel de vendas')<0)throw 0;try{localStorage.setItem('zappa_html',t)}catch(e){}return t});
-if(c)abrir(c);else p.then(abrir).catch(()=>{document.getElementById('m').textContent='Não foi possível carregar. Confira a internet e tente de novo.'});
+if(c){if(document.readyState==='complete')abrir(c);else addEventListener('load',()=>abrir(c))}else p.then(abrir).catch(()=>{document.getElementById('m').textContent='Não foi possível carregar. Confira a internet e tente de novo.'});
 </script>
 </body></html>
