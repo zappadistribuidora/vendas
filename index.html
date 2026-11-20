@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zappa · Painel de Vendas</title>
+<meta name="theme-color" content="#582674">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Zappa Vendas">
+</head>
+<body style="margin:0;background:#582674;color:#fff;font-family:system-ui,sans-serif;display:grid;place-items:center;min-height:100vh">
+<p id="m">Carregando…</p>
+<script>
+const U='https://script.google.com/macros/s/AKfycbyvWnQrEzLjrR1RqRwcVdN2LM-tIXjXDWxZMMNuNJ9-TyVJkpRbDxKNFc55bwzj4B-t_g/exec?v=html';
+function abrir(h){document.open();document.write(h);document.close()}
+let c=null;try{c=localStorage.getItem('zappa_html')}catch(e){}
+const p=fetch(U).then(r=>r.text()).then(t=>{if(t.indexOf('Painel de vendas')<0)throw 0;try{localStorage.setItem('zappa_html',t)}catch(e){}return t});
+if(c)abrir(c);else p.then(abrir).catch(()=>{document.getElementById('m').textContent='Não foi possível carregar. Confira a internet e tente de novo.'});
+</script>
+</body></html>
